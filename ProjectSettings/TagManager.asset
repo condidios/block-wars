@@ -10,6 +10,10 @@ TagManager:
   - WhiteBall
   - BottomWall
   - TopWall
+  - BlueCloneBalls
+  - WhiteCloneBalls
+  - WhiteFireBall
+  - BlueFireBall
   layers:
   - Default
   - TransparentFX
