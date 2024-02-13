@@ -10,17 +10,17 @@ public class Walls : MonoBehaviour
     public GameObject whiteBall;
     public GameObject spawnPositionBlue;
     public GameObject spawnPositionWhite;
-    
+
 
     private void spawnBall()
     {
         if (gameObject.tag == "BottomWall")
         {
-            Instantiate(blueBall,spawnPositionBlue.transform.position,Quaternion.identity);
+            Instantiate(blueBall, spawnPositionBlue.transform.position, Quaternion.identity);
         }
         else if (gameObject.tag == "TopWall")
         {
-            Instantiate(whiteBall,spawnPositionWhite.transform.position,Quaternion.identity);
+            Instantiate(whiteBall, spawnPositionWhite.transform.position, Quaternion.identity);
         }
     }
 
@@ -31,8 +31,11 @@ public class Walls : MonoBehaviour
             if (other.gameObject.tag == "BlueBall")
             {
                 Destroy(other.gameObject);
-                Invoke("spawnBall",timer);
-                
+                Invoke("spawnBall", timer);
+            }
+            else if (other.gameObject.tag == "BlueFireBall" || other.gameObject.tag == "WhiteFireBall")
+            {
+                Destroy(other.gameObject);
             }
         }
         else if (gameObject.tag == "TopWall")
@@ -40,7 +43,11 @@ public class Walls : MonoBehaviour
             if (other.gameObject.tag == "WhiteBall")
             {
                 Destroy(other.gameObject);
-                Invoke("spawnBall",timer);
+                Invoke("spawnBall", timer);
+            }
+            else if (other.gameObject.tag == "BlueFireBall" || other.gameObject.tag == "WhiteFireBall")
+            {
+                Destroy(other.gameObject);
             }
         }
     }
