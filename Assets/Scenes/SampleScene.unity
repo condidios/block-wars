@@ -1109,6 +1109,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6353978531386790272, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
+      propertyPath: speed
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353978531386790272, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
+      propertyPath: isCloned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6353978531386790272, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
+      propertyPath: cloneCount
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
