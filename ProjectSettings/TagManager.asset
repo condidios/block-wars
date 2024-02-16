@@ -14,6 +14,8 @@ TagManager:
   - WhiteCloneBalls
   - WhiteFireBall
   - BlueFireBall
+  - BlueTile
+  - WhiteTile
   layers:
   - Default
   - TransparentFX
@@ -25,9 +27,9 @@ TagManager:
   - BlueTile
   - WhiteBall
   - WhiteTile
-  - 
-  - 
-  - 
+  - Fireball
+  - WhiteSlider
+  - BlueSlider
   - 
   - 
   - 

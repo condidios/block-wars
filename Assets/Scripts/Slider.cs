@@ -69,6 +69,8 @@ public class Slider : MonoBehaviour
     {
         GameObject ball = Instantiate(fireBall, transform.position + (Vector3)direction * 0.5f, Quaternion.identity);
         ball.tag = tag;
+        int LayerIgnoreRaycast = LayerMask.NameToLayer("FireBall");
+        ball.gameObject.layer = LayerIgnoreRaycast;
         Rigidbody2D ballRb = ball.GetComponent<Rigidbody2D>();
         ballRb.velocity = direction.normalized * fireBallSpeed;
     }

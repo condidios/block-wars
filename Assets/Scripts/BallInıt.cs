@@ -43,14 +43,16 @@ public class BallInıt : MonoBehaviour
     private void SetRandomTrajectory()
     {
         Vector2 force = Vector2.zero;
-        force.x = Random.Range(-0.5f, 0.5f);
+        
         if (gameObject.tag == "BlueBall")
         {
             force.y = -1;
+            force.x = Random.Range(-0.5f, 0.5f);
         }
         else if (gameObject.tag == "WhiteBall")
         {
             force.y = 1;
+            force.x = Random.Range(-0.5f, 0.5f);
         }
         rb.AddForce(force.normalized * speed);
     }
