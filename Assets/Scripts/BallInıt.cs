@@ -72,7 +72,8 @@ public class BallInıt : MonoBehaviour
         {
             Vector2 force = Quaternion.Euler(0, 0, -30f * i) * initialDirection;
             GameObject clone = Instantiate(gameObject, transform.position, Quaternion.identity);
-            clone.tag = tag + "CloneBalls";
+            clone.tag = gameObject.tag;
+            int layerChange = LayerMask.NameToLayer("CloneBall");
             Rigidbody2D cloneRb = clone.GetComponent<Rigidbody2D>();
             cloneRb.AddForce(force.normalized * speed);
             Destroy(clone, cloneLife);
