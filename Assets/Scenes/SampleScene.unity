@@ -5294,6 +5294,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6588167424307818545, guid: 9bfea9e4a8edce745b823243693e8257, type: 3}
   m_PrefabInstance: {fileID: 271797257}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &272141737 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7935607879314052211, guid: a953133005a8c004f8f3d996a6cb7d84, type: 3}
+  m_PrefabInstance: {fileID: 183626138084044474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &274748192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6939,6 +6944,9 @@ MonoBehaviour:
   fireBall: {fileID: 7935607879314052211, guid: a953133005a8c004f8f3d996a6cb7d84, type: 3}
   fireBallSpeed: 10
   freezeTime: 2
+  invincibleTime: 2
+  WhiteBall: {fileID: 1495206956}
+  BlueBall: {fileID: 272141737}
 --- !u!61 &419522122
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23687,6 +23695,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5830410811208626742, guid: 36d7714e539fbf84f98eff39c88ee554, type: 3}
   m_PrefabInstance: {fileID: 2136602307}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1495206956 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3449428509765986032, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
+  m_PrefabInstance: {fileID: 207740057932668448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1501125009
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31632,6 +31645,9 @@ MonoBehaviour:
   fireBall: {fileID: 3449428509765986032, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
   fireBallSpeed: 10
   freezeTime: 2
+  invincibleTime: 2
+  WhiteBall: {fileID: 1495206956}
+  BlueBall: {fileID: 272141737}
 --- !u!50 &2022535351
 Rigidbody2D:
   serializedVersion: 4
@@ -34253,10 +34269,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3988065139767183543, guid: a953133005a8c004f8f3d996a6cb7d84, type: 3}
-      propertyPath: m_LinearDrag
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7935607879314052211, guid: a953133005a8c004f8f3d996a6cb7d84, type: 3}
       propertyPath: m_Name
       value: Blue Ball
@@ -34274,25 +34286,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1658114557187205393, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     - target: {fileID: 3449428509765986032, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
       propertyPath: m_Name
       value: White Ball
       objectReference: {fileID: 0}
-    - target: {fileID: 3449428509765986032, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
-      propertyPath: m_Layer
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4077868790831041059, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.09
+      value: 0.34
       objectReference: {fileID: 0}
     - target: {fileID: 4077868790831041059, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 18.4
+      value: 18.95
       objectReference: {fileID: 0}
     - target: {fileID: 4077868790831041059, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34327,16 +34331,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6353978531386790272, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
-      propertyPath: speed
-      value: 500
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353978531386790272, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
       propertyPath: isCloned
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6353978531386790272, guid: 826b8321cad8d464b9b80f8cc62840a8, type: 3}
-      propertyPath: cloneCount
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

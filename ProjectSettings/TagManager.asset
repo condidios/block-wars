@@ -16,6 +16,7 @@ TagManager:
   - BlueFireBall
   - BlueTile
   - WhiteTile
+  - Noball
   layers:
   - Default
   - TransparentFX

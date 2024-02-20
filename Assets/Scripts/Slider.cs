@@ -11,7 +11,12 @@ public class Slider : MonoBehaviour
     public GameObject fireBall;
     public float fireBallSpeed = 1000f;
     public float freezeTime = 2f;
+    public float invincibleTime = 2f;
     private bool isFreezing = false;
+
+    public GameObject WhiteBall;
+
+    public GameObject BlueBall;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,6 +35,11 @@ public class Slider : MonoBehaviour
                 {
                     FireBall(Vector2.down, "WhiteFireBall");
                 }
+                if (Input.GetKeyDown(KeyCode.M))
+                {
+                    BlueBall.tag = "Noball";
+                    StartCoroutine(DisableBallForSeconds(invincibleTime,BlueBall,"BlueBall"));
+                }
                 if (Input.GetKey(KeyCode.LeftArrow))
                 {
                     rb.velocity = new Vector2(-speed, 0);
@@ -42,12 +52,18 @@ public class Slider : MonoBehaviour
                 {
                     rb.velocity = new Vector2(0, 0);
                 }
+                
             }
             else if (gameObject.tag == "BlueSlider")
             {
                 if (Input.GetKeyDown(KeyCode.U))
                 {
                     FireBall(Vector2.up, "BlueFireBall");
+                }
+                if (Input.GetKeyDown(KeyCode.N))
+                {
+                    WhiteBall.tag = "Noball";
+                    StartCoroutine(DisableBallForSeconds(invincibleTime,WhiteBall,"WhiteBall"));
                 }
                 if (Input.GetKey(KeyCode.A))
                 {
@@ -61,6 +77,8 @@ public class Slider : MonoBehaviour
                 {
                     rb.velocity = new Vector2(0, 0);
                 }
+
+                
             }
         }
     }
@@ -69,7 +87,7 @@ public class Slider : MonoBehaviour
     {
         GameObject ball = Instantiate(fireBall, transform.position + (Vector3)direction * 0.5f, Quaternion.identity);
         ball.tag = tag;
-        int LayerIgnoreRaycast = LayerMask.NameToLayer("FireBall");
+        int LayerIgnoreRaycast = LayerMask.NameToLayer("Fireball");
         ball.gameObject.layer = LayerIgnoreRaycast;
         Rigidbody2D ballRb = ball.GetComponent<Rigidbody2D>();
         ballRb.velocity = direction.normalized * fireBallSpeed;
@@ -103,5 +121,11 @@ public class Slider : MonoBehaviour
     {
         yield return new WaitForSeconds(seconds);
         isFreezing = false;
+    }
+
+    IEnumerator DisableBallForSeconds(float seconds,GameObject ball, string ballTag)
+    {
+        yield return new WaitForSeconds(seconds);
+        ball.tag = ballTag;
     }
 }

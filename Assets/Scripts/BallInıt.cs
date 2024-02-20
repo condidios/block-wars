@@ -18,19 +18,22 @@ public class BallInıt : MonoBehaviour
     }
     private void Start()
     {
-        Invoke(nameof(SetRandomTrajectory), 1f);
+        if (gameObject.layer == LayerMask.NameToLayer("WhiteBall") || gameObject.layer == LayerMask.NameToLayer("BlueBall"))
+        {
+            Invoke(nameof(SetRandomTrajectory), 1f);
+        }
     }
 
     void Update()
     {
-        if (gameObject.tag == "WhiteBall")
+        if (gameObject.layer == LayerMask.NameToLayer("WhiteBall"))
         {
             if (Input.GetKeyDown(KeyCode.X))
             {
                 CloneBalls("White");
             }
         }
-        else if (gameObject.tag == "BlueBall")
+        else if (gameObject.layer == LayerMask.NameToLayer("BlueBall"))
         {
             if (Input.GetKeyDown(KeyCode.Z))
             {
@@ -74,6 +77,7 @@ public class BallInıt : MonoBehaviour
             GameObject clone = Instantiate(gameObject, transform.position, Quaternion.identity);
             clone.tag = gameObject.tag;
             int layerChange = LayerMask.NameToLayer("CloneBall");
+            clone.gameObject.layer = layerChange;
             Rigidbody2D cloneRb = clone.GetComponent<Rigidbody2D>();
             cloneRb.AddForce(force.normalized * speed);
             Destroy(clone, cloneLife);
