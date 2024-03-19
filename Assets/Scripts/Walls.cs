@@ -23,12 +23,13 @@ public class Walls : MonoBehaviour
             Instantiate(whiteBall, spawnPositionWhite.transform.position, Quaternion.identity);
         }
     }
+    
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (gameObject.tag == "BottomWall")
         {
-            if (other.gameObject.tag == "BlueBall")
+            if (other.gameObject.tag != "WhiteBall")
             {
                 Destroy(other.gameObject);
                 Invoke("spawnBall", timer);
@@ -40,7 +41,7 @@ public class Walls : MonoBehaviour
         }
         else if (gameObject.tag == "TopWall")
         {
-            if (other.gameObject.tag == "WhiteBall")
+            if (other.gameObject.tag != "BlueBall")
             {
                 Destroy(other.gameObject);
                 Invoke("spawnBall", timer);

@@ -1,24 +1,24 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class BallInıt : MonoBehaviour
+public class BallInit : MonoBehaviour
 {
     public float speed = 500f;
     public int cloneCount = 2;
     public float cloneLife = 3f;
-    private Rigidbody2D rb { get; set; }
+    private Rigidbody2D rb;
+    private bool isClone = false; // Flag to indicate if this is a clone
 
-    // Start is called before the first frame update
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
-    private void Start()
+
+    void Start()
     {
-        if (gameObject.layer == LayerMask.NameToLayer("WhiteBall") || gameObject.layer == LayerMask.NameToLayer("BlueBall"))
+        // Only set a random trajectory if this is not a clone
+        if (!isClone && (gameObject.layer == LayerMask.NameToLayer("WhiteBall") || gameObject.layer == LayerMask.NameToLayer("BlueBall")))
         {
             Invoke(nameof(SetRandomTrajectory), 1f);
         }
@@ -26,60 +26,37 @@ public class BallInıt : MonoBehaviour
 
     void Update()
     {
-        if (gameObject.layer == LayerMask.NameToLayer("WhiteBall"))
+        if (Input.GetKeyDown(KeyCode.X) && gameObject.layer == LayerMask.NameToLayer("WhiteBall"))
         {
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                CloneBalls("White");
-            }
+            CloneBalls();
         }
-        else if (gameObject.layer == LayerMask.NameToLayer("BlueBall"))
+        else if (Input.GetKeyDown(KeyCode.Z) && gameObject.layer == LayerMask.NameToLayer("BlueBall"))
         {
-            if (Input.GetKeyDown(KeyCode.Z))
-            {
-                CloneBalls("Blue");
-            }
+            CloneBalls();
         }
     }
-
 
     private void SetRandomTrajectory()
     {
-        Vector2 force = Vector2.zero;
-        
-        if (gameObject.tag == "BlueBall")
-        {
-            force.y = -1;
-            force.x = Random.Range(-0.5f, 0.5f);
-        }
-        else if (gameObject.tag == "WhiteBall")
-        {
-            force.y = 1;
-            force.x = Random.Range(-0.5f, 0.5f);
-        }
+        Vector2 force = new Vector2(Random.Range(-0.5f, 0.5f), gameObject.tag == "BlueBall" ? -1 : 1);
         rb.AddForce(force.normalized * speed);
     }
 
-    private void CloneBalls(string tag)
+    private void CloneBalls()
     {
-        Vector2 initialDirection;
-        if (tag == "White")
-        {
-            initialDirection = Quaternion.Euler(0, 0, 30f) * Vector2.down;
-        }
-        else
-        {
-            initialDirection = Quaternion.Euler(0, 0, 30f) * Vector2.up;
-        }
+        Vector2 initialDirection = rb.velocity.normalized;
+
         for (int i = 0; i < cloneCount; i++)
         {
-            Vector2 force = Quaternion.Euler(0, 0, -30f * i) * initialDirection;
+            Vector2 force = Quaternion.Euler(0, 0, -30f * i + 15f * (cloneCount - 1)) * initialDirection;
             GameObject clone = Instantiate(gameObject, transform.position, Quaternion.identity);
-            clone.tag = gameObject.tag;
-            int layerChange = LayerMask.NameToLayer("CloneBall");
-            clone.gameObject.layer = layerChange;
+            clone.tag = gameObject.tag; // Set the tag
+            clone.layer = LayerMask.NameToLayer("CloneBall"); // Change layer if needed
+            BallInit cloneScript = clone.GetComponent<BallInit>();
+            cloneScript.isClone = true; // Indicate that this object is a clone
             Rigidbody2D cloneRb = clone.GetComponent<Rigidbody2D>();
-            cloneRb.AddForce(force.normalized * speed);
+            cloneRb.velocity = Vector2.zero; // Reset velocity before applying new force
+            cloneRb.AddForce(force * speed);
             Destroy(clone, cloneLife);
         }
     }

@@ -21,6 +21,8 @@ public class Slider : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        WhiteBall = GameObject.Find("White Ball");
+        BlueBall = GameObject.Find("Blue Ball");
 
     }
 
@@ -37,6 +39,10 @@ public class Slider : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.M))
                 {
+                    if (GameObject.Find("Blue Ball") == null)
+                    {
+                        BlueBall = GameObject.Find("Blue Ball(Clone)");
+                    }
                     BlueBall.tag = "Noball";
                     StartCoroutine(DisableBallForSeconds(invincibleTime,BlueBall,"BlueBall"));
                 }
@@ -62,6 +68,10 @@ public class Slider : MonoBehaviour
                 }
                 if (Input.GetKeyDown(KeyCode.N))
                 {
+                    if (GameObject.Find("White Ball") == null)
+                    {
+                        WhiteBall = GameObject.Find("White Ball(Clone)");
+                    }
                     WhiteBall.tag = "Noball";
                     StartCoroutine(DisableBallForSeconds(invincibleTime,WhiteBall,"WhiteBall"));
                 }
