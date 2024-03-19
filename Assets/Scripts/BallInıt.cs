@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallInit : MonoBehaviour
+public class BallInıt : MonoBehaviour
 {
     public float speed = 500f;
     public int cloneCount = 2;
