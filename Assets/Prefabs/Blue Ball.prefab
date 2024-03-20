@@ -244,6 +244,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f8525f0ba7efe42b69ebb659199722, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
+  speed: 1000
   cloneCount: 2
   cloneLife: 3

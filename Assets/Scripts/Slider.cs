@@ -7,7 +7,7 @@ public class Slider : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    public float speed = 5;
+    public float speed = 20;
     public GameObject fireBall;
     public float fireBallSpeed = 1000f;
     public float freezeTime = 2f;

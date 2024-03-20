@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BallInıt : MonoBehaviour
+public class BallInit : MonoBehaviour
 {
-    public float speed = 500f;
+    public float speed = 1000f;
     public int cloneCount = 2;
     public float cloneLife = 3f;
     private Rigidbody2D rb;
